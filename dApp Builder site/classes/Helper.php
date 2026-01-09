@@ -1,6 +1,9 @@
 <?php
 
 require_once('User.php');
+require_once('Dapp.php');
+require_once('db.php');
+
 class Helper
 {
     public static function getCurrentUser()
