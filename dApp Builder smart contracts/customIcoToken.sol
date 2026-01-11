@@ -152,24 +152,6 @@ contract customIcoToken{
       assert(ethFundDeposit.send(address(this).balance)); // send the eth
     }
 
-    {
-      name = _name;
-      symbol = _symbol;
-      decimals = _decimals;
-      isFinalized = false;                   //controls pre through crowdsale state
-      ethFundDeposit = _ethFundDeposit;
-      tokenFundDeposit = _tokenFundDeposit;
-      tokenFund = _tokenFund*10**decimals;
-      tokenExchangeRate = _tokenExchangeRate;
-      tokenCreationCap = _tokenCreationCap*10**decimals;
-      tokenCreationMin = _tokenCreationMin*10**decimals;
-      fundingStartBlock = _fundingStartBlock;
-      fundingEndBlock = _fundingEndBlock;
-      totalSupply = tokenFund;
-      balances[tokenFundDeposit] = tokenFund;
-      emit CreateToken(tokenFundDeposit, tokenFund);
-    }
-
     /// @dev Allows contributors to recover their ether in the case of a failed funding campaign.
     function refund() external {
       require(isFinalized == false);                       // prevents refund if operational
